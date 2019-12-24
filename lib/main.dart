@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:english_words/english_words.dart';
-void main() => runApp(MyApp());
+void main() => runApp(App());
 
-class MyApp extends StatelessWidget {
+class App extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
 
@@ -14,16 +14,26 @@ class MyApp extends StatelessWidget {
       home: Scaffold(
         appBar: AppBar(
           title: const Center(child:Text("Textbook Hub")),
-          actions: <Widget>[IconButton(
-            icon: Icon(Icons.directions_run)
-          )],
-        ),
-        body: Row(
-          children: [Text("Your premier source of (not) legal textbooks")]
+          actions:getActions()),
+        body: SafeArea(
+          child: Column(
+            children: getTexts(),
+
+          ),
         ),
       ),
     );
   }
+  List<Widget> getTexts(){
+    return <Widget>[];
+
+  }
+
+}
+getActions() {
+  return <Widget>[IconButton(
+      icon: Icon(Icons.book)
+  )];
 
 }
 
