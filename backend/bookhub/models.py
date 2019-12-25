@@ -3,7 +3,7 @@ from django.db import models
 # Create your models here.
 class Textbook(models.Model):
     name=models.CharField(max_length=40)
-    file=models.FileField(upload_to='pdf')
+    file=models.FileField(upload_to='', null=True, blank=True)
     subject=models.CharField(max_length=40)
     grade=models.IntegerField()
 

@@ -51,7 +51,7 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
-
+MEDIA_URL="/pdfs/"
 ROOT_URLCONF = 'backend.urls'
 
 TEMPLATES = [
