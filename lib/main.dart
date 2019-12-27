@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:english_words/english_words.dart';
+import 'package:auto_size_text/auto_size_text.dart';
+import 'APIReqs.dart';
 void main() => runApp(App());
 
 class App extends StatelessWidget {
@@ -13,27 +14,65 @@ class App extends StatelessWidget {
       ),
       home: Scaffold(
         appBar: AppBar(
-          title: const Center(child:Text("Textbook Hub")),
+          title: Center(child:Text("Textbook Hub")),
           actions:getActions()),
         body: SafeArea(
-          child: Column(
-            children: getTexts(),
-
+          child: Padding(
+            padding: EdgeInsets.fromLTRB(300, 10, 300, 10),
+            
+            child: Column(
+              children: <Widget>[
+                for ( Textbook t in getTextbooks() ) createTextbookWidget(t)
+              ]
+            ),
           ),
         ),
-      ),
+      )
     );
   }
-  List<Widget> getTexts(){
-    return <Widget>[];
+  Widget createTextbookWidget(Textbook t){
+    return Card(
+        child:Column(
+          mainAxisSize: MainAxisSize.min,
+          children: <Widget>[
+            ListTile(
+              leading: Text(t.grade.toString()),
+              title: Text(t.name),
+              subtitle: Text(t.subject),
+            ),
+            ButtonBar(
+              children: <Widget>[
+                IconButton(
+                  icon: Icon(Icons.file_download),
+                  onPressed: null,
+                ),
+                IconButton(
+                  icon: Icon(Icons.favorite),
+                  onPressed: null,
+                ),
+                IconButton(
+                  icon: Icon(Icons.arrow_forward),
+                  onPressed: null,
+                )
 
+              ],
+            )
+
+          ],
+        )
+    );
   }
 
+
 }
+
+
 getActions() {
   return <Widget>[IconButton(
       icon: Icon(Icons.book)
   )];
 
 }
+
+
 

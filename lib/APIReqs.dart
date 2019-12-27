@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:flutter/cupertino.dart';
 import 'package:http/http.dart' as http;
 
 class Textbook {
@@ -26,7 +27,10 @@ String ip = "http://127.0.0.1:8000";
 List<Textbook> getTextbooks(){
   final response = http.get('https://jsonplaceholder.typicode.com/posts/1');
   List<Textbook> books=List<Textbook>();
-  response.then((rep){
+  books.add(Textbook(name: "jj",id: 8,grade: 8,subject: "jihh",file: "ftft"));
+  books.add(Textbook(name: "jj",id: 8,grade: 8,subject: "jihh",file: "ftft"));
+  books.add(Textbook(name: "jj",id: 8,grade: 8,subject: "jihh",file: "ftft"));
+  /*response.then((rep){
     if (rep.statusCode == 200) {
 
       // If the call to the server was successful, parse the JSON.
@@ -41,6 +45,8 @@ List<Textbook> getTextbooks(){
 
 
   });
+
+   */
 
   return books;
 
