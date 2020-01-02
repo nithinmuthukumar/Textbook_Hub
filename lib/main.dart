@@ -1,36 +1,78 @@
 import 'package:flutter/material.dart';
-import 'package:auto_size_text/auto_size_text.dart';
-import 'APIReqs.dart';
-void main() => runApp(App());
+import 'Login.dart';
+import 'PageViewer.dart';
+import 'Requests.dart';
 
-class App extends StatelessWidget {
+void main() {
+  runApp(MyApp());
+
+}
+
+class MyApp extends StatelessWidget {
+
   @override
   Widget build(BuildContext context) {
-
     return MaterialApp(
+      title: 'BookHub',
       theme: ThemeData(
-          brightness: Brightness.dark,
-          primaryColor: Colors.blueGrey
+        primarySwatch: Colors.blue,
       ),
-      home: Scaffold(
-        appBar: AppBar(
-          title: Center(child:Text("Textbook Hub")),
-          actions:getActions()),
-        body: SafeArea(
-          child: Padding(
-            padding: EdgeInsets.fromLTRB(300, 10, 300, 10),
-            
-            child: Column(
-              children: <Widget>[
-                for ( Textbook t in getTextbooks() ) createTextbookWidget(t)
-              ]
-            ),
-          ),
-        ),
-      )
+      home: MyHomePage(title: 'Textbooks'),
     );
   }
+}
+
+class MyHomePage extends StatefulWidget {
+  MyHomePage({Key key, this.title}) : super(key: key);
+
+  final String title;
+
+  @override
+  _MyHomePageState createState() => _MyHomePageState();
+}
+
+class _MyHomePageState extends State<MyHomePage> {
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        // Here we take the value from the MyHomePage object that was created by
+        // the App.build method, and use it to set our appbar title.
+        title: Text(widget.title),
+        actions: <Widget>[
+          IconButton(
+            icon: Icon(Icons.account_circle),
+            onPressed: (){
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => (Login())),
+              );
+            },
+          )
+        ],
+        ),
+      body: Column(
+
+        children:<Widget>[
+
+          FutureBuilder(
+        future: getTextbooks(),
+        builder: (context,snapshot){
+          if(snapshot.hasData){
+            return Column(
+                children:[for(Textbook t in snapshot.data) createTextbookWidget(t)]
+            );
+          }
+          return Text("Please Wait a Moment");
+
+        }
+      )
+    ]));
+  }
+
   Widget createTextbookWidget(Textbook t){
+
     return Card(
         child:Column(
           mainAxisSize: MainAxisSize.min,
@@ -47,12 +89,19 @@ class App extends StatelessWidget {
                   onPressed: null,
                 ),
                 IconButton(
-                  icon: Icon(Icons.favorite),
+                  icon: Icon(Icons.favorite_border),
                   onPressed: null,
                 ),
                 IconButton(
                   icon: Icon(Icons.arrow_forward),
-                  onPressed: null,
+                  onPressed: (){
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => (PageViewer(
+                          url:t.file
+                      ))),
+                    );
+                  },
                 )
 
               ],
@@ -62,17 +111,5 @@ class App extends StatelessWidget {
         )
     );
   }
-
-
 }
-
-
-getActions() {
-  return <Widget>[IconButton(
-      icon: Icon(Icons.book)
-  )];
-
-}
-
-
 
