@@ -1,7 +1,6 @@
 from django.contrib import admin
 
 # Register your models here.
-from bookhub.models import Textbook, User
+from bookhub.models import Textbook
 
 admin.site.register(Textbook)
-admin.site.register(User)

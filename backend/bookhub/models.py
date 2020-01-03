@@ -11,14 +11,8 @@ class Textbook(models.Model):
         ordering = ['grade']
     def __str__(self):
         return self.name
-class User(models.Model):
 
-    favourites = models.ForeignKey(Textbook,on_delete=models.CASCADE)
-    recents = models.ForeignKey(Textbook,on_delete=models.CASCADE,related_name="recents")
-    name=models.CharField(max_length=40)
 
-    def __str__(self):
-        return self.name
 
 
 

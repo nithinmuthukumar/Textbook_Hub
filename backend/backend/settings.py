@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'bookhub.apps.BookhubConfig',
     'rest_framework',
+    'rest_framework.authtoken'
 
 ]
 
