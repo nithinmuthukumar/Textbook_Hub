@@ -64,7 +64,7 @@ Future<List<Textbook>> getTextbooks() async {
 
 
 }
-Future<File> getPdf(String url) async{
+Future<String> getPdf(String url) async{
   print(url);
   final response=await http.get(url);
   if(response.statusCode==200){
@@ -72,12 +72,12 @@ Future<File> getPdf(String url) async{
     String dir = (await getApplicationDocumentsDirectory()).path;
     File file = new File('$dir/$filename');
     await file.writeAsBytes(response.bodyBytes);
-    print(file.path);
-
-
-
-    return file;
+    return file.path;
   }
+}
+Future<bool> requestLogin(String user,String pwd) async{
+  final response = await http.post(ip+"");
+
 }
 Future<List<String>> getRecommendations(user,pwd) async{
   Map<String, String> headers = {"Content-type": "application/json"};
@@ -85,7 +85,6 @@ Future<List<String>> getRecommendations(user,pwd) async{
 
   http.Response response = await http.post(ip, headers: headers, body: json);
 
-  int statusCode = response.statusCode;
   Map<String, dynamic> ret = jsonDecode(response.body);
 
   return ret['valid'];

@@ -34,10 +34,10 @@ class PageViewerState extends State<PageViewer> {
                   ),
                 ],
               ),
-              path: snapshot.data
+              path: snapshot.data,
           );
         }
-        return Text("Failed");
+        return Text("Loading");
       }
     );
   }
