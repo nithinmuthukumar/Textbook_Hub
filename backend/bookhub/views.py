@@ -21,13 +21,8 @@ class TextbookViewSet(viewsets.ModelViewSet):
     queryset=models.Textbook.objects.all()
     serializer_class= serializers.TextbookSerializer
 class UserViewSet(viewsets.ModelViewSet):
-    queryset = User
+    queryset = HubUser.objects.all()
     serializer_class = UserSerializer
-    authentication_classes = (TokenAuthentication,)
-    permission_classes = (IsAuthenticated,)
-
-
-
 
 
 

@@ -8,7 +8,7 @@ from . import views
 router = routers.DefaultRouter()
 
 router.register('textbooks', views.TextbookViewSet,basename='textbook')
-router.register('user',views.UserViewSet,basename='user')
+router.register('users',views.UserViewSet,basename='user')
 
 
 

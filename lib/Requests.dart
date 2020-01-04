@@ -79,6 +79,13 @@ Future<bool> requestLogin(String user,String pwd) async{
   final response = await http.post(ip+"");
 
 }
+Future<bool> register(String username,String password,String email) async{
+  Map<String, String> headers = {"Content-type": "application/json"};
+  String json = jsonEncode({"user":username,"password":password,"email":email});
+  final response = await http.post(ip,headers:headers,body: json);
+  print(response);
+}
+
 Future<List<String>> getRecommendations(user,pwd) async{
   Map<String, String> headers = {"Content-type": "application/json"};
   String json = jsonEncode({"user":user,"password":pwd});
@@ -91,5 +98,6 @@ Future<List<String>> getRecommendations(user,pwd) async{
 
 
 }
+
 
 

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'Login.dart';
+import 'Register.dart';
 import 'PageViewer.dart';
 import 'Requests.dart';
 
@@ -46,7 +46,7 @@ class _MyHomePageState extends State<MyHomePage> {
             onPressed: (){
               Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => (Login())),
+                MaterialPageRoute(builder: (context) => (Register())),
               );
             },
           )

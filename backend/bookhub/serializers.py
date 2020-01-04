@@ -9,5 +9,5 @@ class TextbookSerializer(serializers.ModelSerializer):
         fields = ['id', 'name', 'file', 'subject', 'grade']
 class UserSerializer(serializers.ModelSerializer):
     class Meta:
-        model = User
-        fields = ('username', 'email', 'id','first_name')
+        model = HubUser
+        fields = ['email', 'id','first_name']
