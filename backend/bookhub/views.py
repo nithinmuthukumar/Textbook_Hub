@@ -13,6 +13,7 @@ from django.core import serializers
 from django.conf import settings
 import json
 
+from bookhub.models import HubUser
 from bookhub.serializers import UserSerializer
 from . import serializers
 from . import models

@@ -1,6 +1,6 @@
 from django.contrib.auth.models import User
 from rest_framework import serializers
-from bookhub.models import Textbook
+from bookhub.models import Textbook, HubUser
 
 
 class TextbookSerializer(serializers.ModelSerializer):
@@ -10,4 +10,4 @@ class TextbookSerializer(serializers.ModelSerializer):
 class UserSerializer(serializers.ModelSerializer):
     class Meta:
         model = HubUser
-        fields = ['email', 'id','first_name']
+        fields = ['username','email', 'id','password']
