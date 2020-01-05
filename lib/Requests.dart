@@ -75,27 +75,16 @@ Future<String> getPdf(String url) async{
     return file.path;
   }
 }
-Future<bool> requestLogin(String user,String pwd) async{
+Future<bool> login(String user,String pwd) async{
   final response = await http.post(ip+"");
 
+
 }
-Future<bool> register(String username,String password,String email) async{
+Future<int> register(String username,String password,String email) async{
   Map<String, String> headers = {"Content-type": "application/json"};
-  String json = jsonEncode({"user":username,"password":password,"email":email});
-  final response = await http.post(ip,headers:headers,body: json);
-  print(response);
-}
-
-Future<List<String>> getRecommendations(user,pwd) async{
-  Map<String, String> headers = {"Content-type": "application/json"};
-  String json = jsonEncode({"user":user,"password":pwd});
-
-  http.Response response = await http.post(ip, headers: headers, body: json);
-
-  Map<String, dynamic> ret = jsonDecode(response.body);
-
-  return ret['valid'];
-
+  String body = jsonEncode({"username":username,"password":password,'email':email});
+  final response = await http.post(ip+"bookhub/users/",headers:headers,body: body);
+  return response.statusCode;
 
 }
 
