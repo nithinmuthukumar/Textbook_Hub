@@ -25,10 +25,9 @@ class UserViewSet(viewsets.ModelViewSet):
     queryset = HubUser.objects.all()
     serializer_class = UserSerializer
 
-    def create(self, request, *args, **kwargs):
-        w=super().create(request, *args, **kwargs)
-        print(w)
-        return w
+def verify(request,token):
+    print(token)
+
 
 
 

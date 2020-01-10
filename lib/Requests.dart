@@ -84,6 +84,7 @@ Future<int> register(String username,String password,String email) async{
   Map<String, String> headers = {"Content-type": "application/json"};
   String body = jsonEncode({"username":username,"password":password,'email':email});
   final response = await http.post(ip+"bookhub/users/",headers:headers,body: body);
+  print(response.body);
   return response.statusCode;
 
 }

@@ -15,7 +15,8 @@ router.register('users',views.UserViewSet,basename='user')
 urlpatterns = [
     path('', include(router.urls)),
     path('api-token-auth/',authviews.obtain_auth_token,name='api-token-auth'),
-    path('login/',auth_login,name='login')
+    path('login/',auth_login,name='login'),
+    path('verify/<str:pk>',views.verify)
 
 
 ]

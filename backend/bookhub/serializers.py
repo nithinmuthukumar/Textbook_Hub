@@ -1,9 +1,12 @@
+from random import shuffle
+
 from django.contrib.auth.models import User
 from django.forms import models
 from rest_framework import serializers
 from bookhub.models import Textbook, HubUser
 from django.db import models
 from django.core.mail import send_mail
+import string
 
 
 
@@ -18,12 +21,14 @@ class UserSerializer(serializers.ModelSerializer):
         fields = ['username','password','email']
 
     def create(self, validated_data):
+        link=';hgpurghperghpreughpohperuhgpi'
+        token=shuffle(string.ascii_letters)
         send_mail(
             'Account Activation',
-            '',
+            'This is to activate your account\n'+link,
             'kathrikai30201094@gmail.com',
-            ['to@example.com'],
-            fail_silently=False,
+            [validated_data['email']],
+            fail_silently=True,
         )
         return super().create(validated_data)
 

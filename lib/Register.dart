@@ -19,6 +19,7 @@ class RegisterState extends State<Register>{
   TextEditingController emailController=TextEditingController();
   List<Text> pwdCriterias;
   String emailIsValid="";
+  Text tryAgain=Text("");
 
 
   @override
@@ -90,6 +91,9 @@ class RegisterState extends State<Register>{
               Column(
                 children:pwdCriterias,
               ),
+              Column(
+                children: <Widget>[tryAgain],
+              ),
               Padding(
                   padding: EdgeInsets.all(20),
                   child: RaisedButton(
@@ -117,9 +121,10 @@ class RegisterState extends State<Register>{
                                   break;
                                 case 400:
                                   setState(() {
-                                    pwdCriterias.add(Text("Please Try Something Else"));
+                                    tryAgain=Text("Please Try Something Else");
                                     
                                   });
+
 
                               }
 
