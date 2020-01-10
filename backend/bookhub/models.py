@@ -22,6 +22,7 @@ class Textbook(models.Model):
 class HubUser(AbstractUser):
     models.ManyToManyField(Textbook, blank=True)
     models.ManyToManyField(Textbook, blank=True)
+    email = models.EmailField()
 
 
 
