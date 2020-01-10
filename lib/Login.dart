@@ -9,8 +9,10 @@ class Login extends StatelessWidget{
       body: SafeArea(
         child: Column(
           children: <Widget>[
-            Padding(),
-            Padding()
+            Padding(
+              padding:EdgeInsets.all(10),
+              child:Text("Login")
+            )
           ],
         ),
       )
