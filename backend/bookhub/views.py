@@ -26,7 +26,10 @@ class UserViewSet(viewsets.ModelViewSet):
     serializer_class = UserSerializer
 
 def verify(request,token):
-    print(token)
+    for v in models.HubUser.objects.filter('verified'):
+        if token==v.token:
+            v.verified=True
+            return Response('{verified:true}')
 
 
 

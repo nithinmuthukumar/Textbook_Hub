@@ -21,7 +21,8 @@ class UserSerializer(serializers.ModelSerializer):
         fields = ['username','password','email']
 
     def create(self, validated_data):
-        link=';hgpurghperghpreughpohperuhgpi'
+
+        link=''
         token=shuffle(string.ascii_letters)
         send_mail(
             'Account Activation',
